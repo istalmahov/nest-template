@@ -33,8 +33,11 @@ export class User extends Model {
   @Column({ type: DataType.STRING, unique: true, allowNull: false })
   email: string;
 
-  @Column({ type: DataType.STRING, allowNull: false })
+  @Column({ type: DataType.STRING, allowNull: true })
   password: string;
+
+  @Column({ type: DataType.STRING, allowNull: true })
+  googleId: string;
 
   @BeforeCreate
   static async hashPassword(user: User) {

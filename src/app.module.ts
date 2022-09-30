@@ -22,7 +22,9 @@ import { UserModule } from './user/user.module';
           password: config.get('DB_PASSWORD'),
           database: config.get('DB_DATABASE_NAME'),
           autoLoadModels: true,
-          synchronize: true,
+          sync: {
+            force: true,
+          },
         };
       },
     }),

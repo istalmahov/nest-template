@@ -12,13 +12,13 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async validateLogin(loginDto: LoginDto): Promise<User | null> {
+  async validatePasswordLogin(loginDto: LoginDto): Promise<User | null> {
     const user = await this.userService.findOne(
       { email: loginDto.email },
       UserScopes.withPassword,
     );
 
-    if (!user) {
+    if (!user || !user.password) {
       return null;
     }
 
